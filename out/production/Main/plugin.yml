@@ -1,0 +1,23 @@
+name: wh_ruletka
+version: 1.0.0
+main: me.whoyou.losowanie.Main
+description: Prosty plugin na ruletke na serwerze.
+api-version: 1.14
+
+commands:
+  bet:
+    description: Zabetuj
+    usage: /<command> [ilosc_coinsow] [czerwone|zielone|czarne]
+    permission-message: Nie masz permisji!
+  saldo:
+    description: Zobacz swoje saldo
+    usage: /<command>
+    permission-message: Nie masz permisji!
+  setcoins:
+    description: Ustaw saldo graczu
+    usage: /<command> [ilosc_coinsow] [nick_gracza]
+    permission-message: Nie masz permisji!
+  kup:
+    description: Otwórz menu kupna
+    usage: /<command>
+    permission-message: Nie masz permisji!
