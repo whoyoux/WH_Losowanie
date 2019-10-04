@@ -17,7 +17,7 @@ public class Setcoins implements CommandExecutor {
                 Player p = (Player) sender;
 
                 if(args.length == 2) {
-                    if(p.hasPermission("wh_ruletka.setcoins")) {
+                    if(p.hasPermission("wh_ruletka.admin.setcoins")) {
 
                         if(api.isPlayer(args[1])) {
 

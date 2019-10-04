@@ -30,6 +30,9 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("saldo").setExecutor((CommandExecutor) new Saldo());
         getCommand("setcoins").setExecutor((CommandExecutor) new Setcoins());
         getCommand("kup").setExecutor((CommandExecutor) new Kup());
+        getCommand("sprzedaj").setExecutor((CommandExecutor) new Sprzedaj());
+        getCommand("dosprzedania").setExecutor((CommandExecutor) new Dosprzedania());
+
 
         api = new Api(this);
         Bet.api = new Api(this);
@@ -37,6 +40,7 @@ public class Main extends JavaPlugin implements Listener {
         Setcoins.api = new Api(this);
         Kup.api = new Api(this);
         ClickEvent.api = new Api(this);
+        Sprzedaj.api = new Api(this);
         getServer().getPluginManager().registerEvents(this,this);
         getServer().getPluginManager().registerEvents(new ClickEvent(), this);
     }

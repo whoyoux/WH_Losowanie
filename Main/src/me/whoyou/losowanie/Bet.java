@@ -1,6 +1,7 @@
 package me.whoyou.losowanie;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,6 +12,9 @@ import java.util.Random;
 public class Bet implements CommandExecutor {
 
     public static Api api;
+
+    private String color_Title_Green = "§2";
+    private String color_Title_Gold = "§6";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -35,12 +39,11 @@ public class Bet implements CommandExecutor {
                                     if(game < 525) {
                                         if(args[1].equals("czerwone")) {
 
-                                            //p.sendMessage(ChatColor.GRAY + "Wygralo" + ChatColor.RED + " czerwone");
                                             api.addPlayerCoins(p,2 * coins_bet);
                                             api.refreshConfig();
-                                            //p.sendMessage(ChatColor.GRAY + "Twoje saldo to: " + ChatColor.YELLOW + api.getPlayerCoins(p) + ChatColor.BLUE + " +" + 2 * coins_bet);
+                                            api.sendTitle(p,"§eGratulacje" + color_Title_Green + " Wygralo §cczerwone §9+" + 2*coins_bet, color_Title_Green + "Twoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
+                                            api.playEffect(p, Color.RED);
 
-                                            api.sendTitle(p,"§eGratulacje!!! §fWygralo §cczerwone §9+" + 2*coins_bet, "§fTwoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
                                             return true;
                                         } else {
                                             lose(p,game, coins_bet);
@@ -48,23 +51,19 @@ public class Bet implements CommandExecutor {
                                         }
                                     } else if (game < 575) {
                                         if(args[1].equals("zielone")) {
-                                            //p.sendMessage(ChatColor.GRAY + "Wygralo" + ChatColor.GREEN + " zielone");
                                             api.addPlayerCoins(p,14 * coins_bet);
-                                            //p.sendMessage(ChatColor.GRAY + "Twoje saldo to: " + ChatColor.YELLOW + api.getPlayerCoins(p) + ChatColor.BLUE + " +" + 14 * coins_bet);
-                                            api.sendTitle(p,"§eGratulacje!!! §fWygralo §azielone §9+" + 14*coins_bet, "§fTwoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
+                                            api.sendTitle(p,"§eGratulacje!" + color_Title_Green + " Wygralo §azielone §9+" + 14*coins_bet, color_Title_Green + "Twoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
+                                            api.playEffect(p, Color.GREEN);
                                             return true;
                                         } else {
-                                            //p.sendMessage(ChatColor.GRAY + "Niestety przegrałeś.");
-
                                             lose(p,game, coins_bet);
                                             return true;
                                         }
                                     } else if (game < 1000) {
                                         if(args[1].equals("czarne")) {
-                                            //p.sendMessage(ChatColor.GRAY + "Wygralo " + ChatColor.DARK_GRAY + "czarne");
                                             api.addPlayerCoins(p,2 * coins_bet);
-                                            //p.sendMessage(ChatColor.GRAY + "Twoje saldo to: " + ChatColor.YELLOW + api.getPlayerCoins(p) + ChatColor.BLUE +  " +" + 2 *coins_bet);
-                                            api.sendTitle(p,"§eGratulacje!!! §fWygralo §8czarne §9+" + 2*coins_bet, "§fTwoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
+                                            api.sendTitle(p,"§eGratulacje!" + color_Title_Green + " Wygralo §8czarne §9+" + 2*coins_bet, color_Title_Green + "Twoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
+                                            api.playEffect(p, Color.BLACK);
                                             return true;
                                         } else {
                                             lose(p,game, coins_bet);
@@ -110,21 +109,15 @@ public class Bet implements CommandExecutor {
         String win_team = "";
 
         if(game < 525) {
-            //p.sendMessage(ChatColor.GRAY + "Wygralo" + ChatColor.RED + " czerwone");
-            //api.sendTitle(p,"Wygrało §cczerwone", "", 40, 20, 20);
-            win_team =  "Wygrało §cczerwone";
+            win_team =  color_Title_Gold + "Wygrało §cczerwone";
         } else if(game <575) {
-            //p.sendMessage(ChatColor.GRAY + "Wygralo" + ChatColor.GREEN + " zielone");
-            //api.sendTitle(p,"Wygrało §azielone", "", 40, 20, 20);
-            win_team =  "Wygrało §azielone";
+            win_team =  color_Title_Gold + "Wygrało §azielone";
         } else if(game < 1000) {
-            //p.sendMessage(ChatColor.GRAY + "Wygralo " + ChatColor.DARK_GRAY + "czarne");
-            //api.sendTitle(p,"Wygrało §8czarne", "", 40, 20, 20);
-            win_team =  "Wygrało §8czarne";
+            win_team =  color_Title_Gold + "Wygrało §8czarne";
         }
 
         api.refreshConfig();
-        api.sendTitle(p,"Niestety przegrałeś, " + win_team,"§fTwoje saldo to §e" + api.getPlayerCoins(p) , 40, 20, 20);
+        api.sendTitle(p,color_Title_Green + "Niestety przegrałeś, " + win_team,color_Title_Green + "Twoje saldo to §e" + api.getPlayerCoins(p) , 40, 20, 20);
     }
 
 }

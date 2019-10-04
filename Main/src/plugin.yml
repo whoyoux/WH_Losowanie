@@ -1,7 +1,7 @@
 name: wh_ruletka
 version: 1.0.0
 main: me.whoyou.losowanie.Main
-description: Prosty plugin na ruletke na serwerze.
+description: Plugin na ruletke z własnym systemem ekonomii.
 api-version: 1.14
 
 commands:
@@ -19,5 +19,13 @@ commands:
     permission-message: Nie masz permisji!
   kup:
     description: Otwórz menu kupna
+    usage: /<command>
+    permission-message: Nie masz permisji!
+  sprzedaj:
+    description: Sprzedaj item
+    usage: /<command>
+    permission-message: Nie masz permisji!
+  dosprzedania:
+    description: Wyświetla listę itemów, które można sprzedać
     usage: /<command>
     permission-message: Nie masz permisji!

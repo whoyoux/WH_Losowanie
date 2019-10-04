@@ -6,7 +6,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a7522f7-1f18-402b-bfa1-1df5713fee36" name="Default Changelist" comment="" />
+    <list default="true" id="0a7522f7-1f18-402b-bfa1-1df5713fee36" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Dosprzedania.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Sprzedaj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Api.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Api.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Bet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Bet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/ClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/ClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Kup.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Kup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Saldo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Saldo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Setcoins.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/me/whoyou/losowanie/Setcoins.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Main/src/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Main/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Main/plugin.yml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +34,17 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1R0NFCt2o3aS46LbxWUwSc26jRX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="wh_losowanie" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/MC/_SERWER_/plugins" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -62,5 +81,18 @@
       <updated>1568799948746</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

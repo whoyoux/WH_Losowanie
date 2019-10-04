@@ -4,12 +4,14 @@ import net.minecraft.server.v1_14_R1.IChatBaseComponent;
 import net.minecraft.server.v1_14_R1.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_14_R1.PacketPlayOutTitle;
 import net.minecraft.server.v1_14_R1.PacketPlayOutTitle.EnumTitleAction;
+import net.minecraft.server.v1_14_R1.PacketPlayOutWorldParticles;
 import net.minecraft.server.v1_14_R1.PlayerConnection;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import org.bukkit.*;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.meta.FireworkMeta;
 
 import java.util.UUID;
 
@@ -104,6 +106,28 @@ public class Api {
         PacketPlayOutTitle subtitlePackiet = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, subtitleJSON);
         connection.sendPacket(titlePacket);
         connection.sendPacket(subtitlePackiet);
+    }
+
+    public void playEffect(Player p, Color color) {
+        Firework f = p.getWorld().spawn(p.getLocation(), Firework.class);
+        FireworkMeta data = f.getFireworkMeta();
+        data.addEffects(FireworkEffect.builder().withColor(color).with(FireworkEffect.Type.BALL_LARGE).build());
+        data.setPower(2);
+        f.setFireworkMeta(data);
+    }
+
+
+    public String item_name_polish(Integer amount, String one_item, String more_items) {
+        String name;
+        if(amount == 1) {
+            name = one_item;
+        } else if(amount > 1) {
+            name = more_items;
+        } else {
+            name = ChatColor.RED + "Błąd!";
+        }
+
+        return name;
     }
 
 
