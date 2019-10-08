@@ -9,8 +9,6 @@ import org.bukkit.entity.Player;
 public class Saldo implements CommandExecutor {
 
     public static Api api;
-    private String color_Title_Green = "§2";
-    private String color_Title_Gold = "§6";
 
 
     @Override
@@ -23,16 +21,16 @@ public class Saldo implements CommandExecutor {
                     Integer currentMoney = api.getPlayerCoins(p);
 
                     if (currentMoney != null) {
-                        api.sendTitle(p, color_Title_Green +"Twoje saldo to: §e" + currentMoney.toString(), "", 40, 20, 20);
+                        api.sendTitle(p, api.getString("color_Title_Primary") +api.getString("balance") + api.getString("color_Title_Congratulation") + currentMoney.toString(), "", 40, 20, 20);
                         return true;
                     } else {
-                        api.sendTitle(p, "§cWystąpił błąd!", "§cPrzepraszamy za utrudnienia!", 40, 20, 20);
+                        api.sendTitle(p, api.getString("color_red") + api.getString("error"), "", 40, 20, 20);
                         return true;
                     }
                 } else if (args.length == 1) {
 
                     if (!p.hasPermission("wh_ruletka.admin.saldo")) {
-                        p.sendMessage(ChatColor.RED + "Nie masz do tej komendy dostępu!");
+                        p.sendMessage(ChatColor.RED + api.getString("permission"));
                         return true;
                     }
 
@@ -43,24 +41,24 @@ public class Saldo implements CommandExecutor {
                         Integer playerMoney = api.getPlayerCoins(player);
 
                         if (playerMoney != null) {
-                            p.sendMessage(ChatColor.GRAY + "Saldo " + playerName + " to: " + ChatColor.YELLOW + playerMoney.toString());
+                            p.sendMessage(ChatColor.GRAY + api.getString("balance_player") +" " + playerName + ": " + api.getString("color_Title_Congratulation") + playerMoney.toString());
                             return true;
                         } else {
-                            p.sendMessage(ChatColor.RED + "Wystąpił błąd! Przepraszamy za utrudnienia!");
+                            p.sendMessage(ChatColor.RED + api.getString("error"));
                             return true;
                         }
 
                     } else {
-                        p.sendMessage(ChatColor.RED + "Nie znaleziono takiego gracza!");
+                        p.sendMessage(ChatColor.RED + api.getString("not_found_player"));
                         return true;
                     }
                 } else {
-                    p.sendMessage(ChatColor.RED + "Błędna ilość argumentów!");
+                    p.sendMessage(ChatColor.RED + api.getString("error_args"));
                     return true;
                 }
             }
             } else {
-                sender.sendMessage(ChatColor.RED + "Tylko gracze mogą uzyc tej komendy!");
+                sender.sendMessage(ChatColor.RED + api.getString("only_players"));
                 return true;
             }
 

@@ -33,60 +33,56 @@ public class Sprzedaj implements CommandExecutor {
                         if(item_mat == Material.DIAMOND) {
                             int price = amount * 5;
 
-                            p.sendMessage(ChatColor.GRAY + "Sprzedano " + ChatColor.BLUE + api.item_name_polish(amount, "diament", "diamenty") + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
+                            p.sendMessage(ChatColor.GRAY + api.getString("sell") + " " + ChatColor.BLUE + api.item_name_polish(amount, api.getString("diamond"),api.getString("diamond") + api.getString("more_1")) + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
                             p.getInventory().removeItem(item);
                             api.addPlayerCoins(p,price);
                             return true;
                         } else if(item_mat == Material.COBBLESTONE) {
                             int price = amount * 1;
 
-                            p.sendMessage(ChatColor.GRAY + "Sprzedano " + ChatColor.DARK_GRAY + api.item_name_polish(amount, "cobblestone", "cobblestony") + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
+                            p.sendMessage(ChatColor.GRAY + api.getString("sell") + " " + ChatColor.DARK_GRAY + api.item_name_polish(amount, api.getString("cobblestone"),api.getString("cobblestone") + api.getString("more_1")) + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
                             p.getInventory().removeItem(item);
                             api.addPlayerCoins(p,price);
                             return true;
                         } else if(item_mat == Material.DIRT) {
                             int price = amount * 1;
 
-                            p.sendMessage(ChatColor.GRAY + "Sprzedano " + ChatColor.GREEN + api.item_name_polish(amount, "dirt", "dirt") + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
+                            p.sendMessage(ChatColor.GRAY + api.getString("sell") + " " + ChatColor.GREEN + api.item_name_polish(amount, api.getString("dirt"),api.getString("dirt") + api.getString("more_1")) + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
                             p.getInventory().removeItem(item);
                             api.addPlayerCoins(p,price);
                             return true;
                         } else if(item_mat == Material.REDSTONE) {
                             int price = amount * 2;
 
-                            p.sendMessage(ChatColor.GRAY + "Sprzedano " + ChatColor.DARK_RED + api.item_name_polish(amount, "redstone", "redstony") + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
+                            p.sendMessage(ChatColor.GRAY + api.getString("sell") + " " + ChatColor.DARK_RED + api.item_name_polish(amount, api.getString("redstone"),api.getString("redstone") + api.getString("more_1")) + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
                             p.getInventory().removeItem(item);
                             api.addPlayerCoins(p,price);
                             return true;
                         } else if(item_mat == Material.EMERALD) {
                             int price = amount * 7;
 
-                            p.sendMessage(ChatColor.GRAY + "Sprzedano " + ChatColor.GREEN + api.item_name_polish(amount, "emerald", "emeraldy") + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
+                            p.sendMessage(ChatColor.GRAY + api.getString("sell") + " " + ChatColor.GREEN + api.item_name_polish(amount, api.getString("emerald"),api.getString("emerald") + api.getString("more_1")) + ChatColor.GRAY + " za " + ChatColor.YELLOW + price);
                             p.getInventory().removeItem(item);
                             api.addPlayerCoins(p,price);
                             return true;
                         }
 
-                        p.sendMessage(ChatColor.GRAY + "Tego nie da się jeszcze sprzedać!");
+                        p.sendMessage(ChatColor.GRAY + api.getString("cant_sell"));
                         return true;
                     } else {
-                        p.sendMessage(ChatColor.RED + "Nie masz itemu w ręce!");
+                        p.sendMessage(ChatColor.RED + api.getString("item_hand"));
                         return true;
                     }
 
                 } else {
-                    p.sendMessage(ChatColor.RED + "Błędna ilość argumentów!");
+                    p.sendMessage(ChatColor.RED + api.getString("error_args"));
+                    p.sendMessage(ChatColor.RED + api.getString("usage_sprzedaj"));
                     return true;
                 }
 
-
-
-
-
-
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "Tylko gracze mogą uzyc tej komendy!");
+            sender.sendMessage(ChatColor.RED + api.getString("only_players"));
             return true;
         }
 

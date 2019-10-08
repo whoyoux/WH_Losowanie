@@ -28,7 +28,7 @@ public class Main extends JavaPlugin implements Listener {
 
         getCommand("bet").setExecutor((CommandExecutor) new Bet());
         getCommand("saldo").setExecutor((CommandExecutor) new Saldo());
-        getCommand("setcoins").setExecutor((CommandExecutor) new Setcoins());
+        getCommand("ustawsaldo").setExecutor((CommandExecutor) new Ustawsaldo());
         getCommand("kup").setExecutor((CommandExecutor) new Kup());
         getCommand("sprzedaj").setExecutor((CommandExecutor) new Sprzedaj());
         getCommand("dosprzedania").setExecutor((CommandExecutor) new Dosprzedania());
@@ -37,10 +37,11 @@ public class Main extends JavaPlugin implements Listener {
         api = new Api(this);
         Bet.api = new Api(this);
         Saldo.api = new Api(this);
-        Setcoins.api = new Api(this);
+        Ustawsaldo.api = new Api(this);
         Kup.api = new Api(this);
         ClickEvent.api = new Api(this);
         Sprzedaj.api = new Api(this);
+        Dosprzedania.api = new Api(this);
         getServer().getPluginManager().registerEvents(this,this);
         getServer().getPluginManager().registerEvents(new ClickEvent(), this);
     }
@@ -62,7 +63,7 @@ public class Main extends JavaPlugin implements Listener {
         p.sendMessage(namePlayer);
 
         if (getConfig().getString(p.getUniqueId().toString()) == null) {
-            getConfig().set(p.getUniqueId().toString(), 25);
+            getConfig().set("Users. " + p.getUniqueId().toString(), 25);
             saveConfig();
         }
 

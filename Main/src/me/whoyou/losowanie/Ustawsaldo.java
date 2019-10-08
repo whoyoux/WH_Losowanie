@@ -6,14 +6,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Setcoins implements CommandExecutor {
+public class Ustawsaldo implements CommandExecutor {
 
     public static Api api;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player) {
-            if(command.getName().equalsIgnoreCase("setcoins")) {
+            if(command.getName().equalsIgnoreCase("ustawsaldo")) {
                 Player p = (Player) sender;
 
                 if(args.length == 2) {
@@ -30,42 +30,43 @@ public class Setcoins implements CommandExecutor {
 
                                     if(player != null) {
                                         api.setPlayerCoins(player,coinsToAdd);
-                                        p.sendMessage(ChatColor.GRAY + "Kwota: " + ChatColor.YELLOW + coinsToAdd + ChatColor.GRAY + " została ustawiona graczu: " + ChatColor.YELLOW + player.getName() + ChatColor.GRAY + ".");
+                                        p.sendMessage(ChatColor.GRAY + api.getString("amout") + ": " + ChatColor.YELLOW + coinsToAdd + ChatColor.GRAY + " " + api.getString("set") + ": " + ChatColor.YELLOW + player.getName() + ChatColor.GRAY + ".");
                                         return true;
                                     } else {
-                                        p.sendMessage(ChatColor.RED + "Nie znaleziono gracza!");
+                                        p.sendMessage(ChatColor.RED + api.getString("not_found_player"));
                                         return true;
                                     }
 
 
                                 } else {
-                                    p.sendMessage(ChatColor.RED + "Kwota do ustawienia musi być dodatnia!");
+                                    p.sendMessage(ChatColor.RED + api.getString("more_than_0"));
                                     return true;
                                 }
 
                             } else {
-                                p.sendMessage(ChatColor.RED + "Kwota do ustawienia musi być liczbą i być miejsza niż 1mln!");
+                                p.sendMessage(ChatColor.RED + api.getString("amout_more_1mln"));
                                 return true;
                             }
 
                         } else {
-                            p.sendMessage(ChatColor.RED + "Nie ma takiego gracza!");
+                            p.sendMessage(ChatColor.RED + api.getString("not_found_player"));
                             return true;
                         }
 
                     } else {
-                        p.sendMessage(ChatColor.RED + "Nie masz do tej komendy dostępu!");
+                        p.sendMessage(ChatColor.RED + api.getString("permission"));
                         return true;
                     }
 
                 } else {
-                    p.sendMessage(ChatColor.RED + "Błędna ilość argumentów!");
+                    p.sendMessage(ChatColor.RED + api.getString("error_args"));
+                    p.sendMessage(ChatColor.RED + api.getString("usage_setcoins"));
                     return true;
                 }
 
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "Tylko gracze mogą uzyc tej komendy!");
+            sender.sendMessage(ChatColor.RED + api.getString("only_players"));
             return true;
         }
 

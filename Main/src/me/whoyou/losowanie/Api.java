@@ -4,16 +4,12 @@ import net.minecraft.server.v1_14_R1.IChatBaseComponent;
 import net.minecraft.server.v1_14_R1.IChatBaseComponent.ChatSerializer;
 import net.minecraft.server.v1_14_R1.PacketPlayOutTitle;
 import net.minecraft.server.v1_14_R1.PacketPlayOutTitle.EnumTitleAction;
-import net.minecraft.server.v1_14_R1.PacketPlayOutWorldParticles;
 import net.minecraft.server.v1_14_R1.PlayerConnection;
 import org.bukkit.*;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
-
-import java.util.UUID;
 
 public class Api {
 
@@ -28,7 +24,8 @@ public class Api {
 
     public boolean isPlayer(String namePlayer) {
 
-        Player pToSearch = plugin.getServer().getPlayerExact(namePlayer);
+
+        Player pToSearch = plugin.getServer().getPlayer(namePlayer);
 
         if(pToSearch != null) {
             return true;
@@ -38,7 +35,7 @@ public class Api {
     }
 
     public Player getPlayer(String namePlayer) {
-        Player p = plugin.getServer().getPlayerExact(namePlayer);
+        Player p = plugin.getServer().getPlayer(namePlayer);
 
         if(p != null) {
             return p;
@@ -48,27 +45,27 @@ public class Api {
     }
 
     public void addPlayerCoins(Player p, Integer coins) {
-        if (plugin.getConfig().getString(p.getUniqueId().toString()) == null) return;
+        if (plugin.getConfig().getString("Users. " + p.getUniqueId().toString()) == null) return;
 
-        int coins_old = plugin.getConfig().getInt(p.getUniqueId().toString());
+        int coins_old = plugin.getConfig().getInt("Users. " + p.getUniqueId().toString());
 
-        plugin.getConfig().set(p.getUniqueId().toString(), coins_old + coins);
+        plugin.getConfig().set("Users. " + p.getUniqueId().toString(), coins_old + coins);
 
         plugin.saveConfig();
         plugin.reloadConfig();
     }
 
     public void removePlayerCoins(Player p, Integer coinsToRemove) {
-        if (plugin.getConfig().getString(p.getUniqueId().toString()) == null) return;
+        if (plugin.getConfig().getString("Users. " + p.getUniqueId().toString()) == null) return;
 
-        int coins_old = plugin.getConfig().getInt(p.getUniqueId().toString());
+        int coins_old = plugin.getConfig().getInt("Users. " + p.getUniqueId().toString());
 
         if(coins_old < coinsToRemove) {
-            plugin.getConfig().set(p.getUniqueId().toString(), 0);
+            plugin.getConfig().set("Users. " + p.getUniqueId().toString(), 0);
             return;
         }
 
-        plugin.getConfig().set(p.getUniqueId().toString(), coins_old - coinsToRemove);
+        plugin.getConfig().set("Users. " + p.getUniqueId().toString(), coins_old - coinsToRemove);
 
         plugin.saveConfig();
         plugin.reloadConfig();
@@ -78,15 +75,15 @@ public class Api {
         plugin.saveConfig();
         plugin.reloadConfig();
 
-        if (plugin.getConfig().getString(p.getUniqueId().toString()) == null) return 0;
-        Integer coins = plugin.getConfig().getInt(p.getUniqueId().toString());
+        if (plugin.getConfig().getString("Users. " + p.getUniqueId().toString()) == null) return 0;
+        Integer coins = plugin.getConfig().getInt("Users. " + p.getUniqueId().toString());
         return coins;
     }
 
     public void setPlayerCoins(Player p, Integer coins) {
-        if (plugin.getConfig().getString(p.getUniqueId().toString()) == null) return;
+        if (plugin.getConfig().getString("Users. " + p.getUniqueId().toString()) == null) return;
 
-        plugin.getConfig().set(p.getUniqueId().toString(),coins);
+        plugin.getConfig().set("Users. " + p.getUniqueId().toString(),coins);
 
         plugin.saveConfig();
         plugin.reloadConfig();
@@ -129,6 +126,19 @@ public class Api {
 
         return name;
     }
+
+
+    public String getString(String path) {
+        String string = plugin.getConfig().getString(path);
+
+        if(string != "" || string != " ") {
+            return string;
+        } else {
+            return "Not found!";
+        }
+    }
+
+
 
 
     public boolean isNumber(String str) {

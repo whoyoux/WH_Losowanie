@@ -13,9 +13,6 @@ public class Bet implements CommandExecutor {
 
     public static Api api;
 
-    private String color_Title_Green = "§2";
-    private String color_Title_Gold = "§6";
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player) {
@@ -27,7 +24,7 @@ public class Bet implements CommandExecutor {
 
                         if(api.getNumber(args[0]) > 0) {
 
-                            if(args[1].equals("czerwone") || args[1].equals("zielone") || args[1].equals("czarne")) {
+                            if(args[1].equals(api.getString("red_team")) || args[1].equals(api.getString("green_team")) || args[1].equals(api.getString("black_team"))) {
 
                                 int coins = api.getPlayerCoins(p);
                                 int coins_bet = api.getNumber(args[0]);
@@ -37,11 +34,11 @@ public class Bet implements CommandExecutor {
                                     api.removePlayerCoins(p, coins_bet);
 
                                     if(game < 525) {
-                                        if(args[1].equals("czerwone")) {
+                                        if(args[1].equals(api.getString("red_team"))) {
 
                                             api.addPlayerCoins(p,2 * coins_bet);
                                             api.refreshConfig();
-                                            api.sendTitle(p,"§eGratulacje" + color_Title_Green + " Wygralo §cczerwone §9+" + 2*coins_bet, color_Title_Green + "Twoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
+                                            api.sendTitle(p,api.getString("color_Title_Congratulation") + api.getString("congratulation") +  " " + api.getString("color_Title_Primary") + api.getString("win") + api.getString("color_red") +  api.getString("red_team") + api.getString("color_blue") + " +" + 2*coins_bet, api.getString("color_Title_Primary") + api.getString("balance")+ api.getString("color_Title_Congratulation") + api.getPlayerCoins(p), 40, 20, 20);
                                             api.playEffect(p, Color.RED);
 
                                             return true;
@@ -50,9 +47,9 @@ public class Bet implements CommandExecutor {
                                             return true;
                                         }
                                     } else if (game < 575) {
-                                        if(args[1].equals("zielone")) {
+                                        if(args[1].equals(api.getString("green_team"))) {
                                             api.addPlayerCoins(p,14 * coins_bet);
-                                            api.sendTitle(p,"§eGratulacje!" + color_Title_Green + " Wygralo §azielone §9+" + 14*coins_bet, color_Title_Green + "Twoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
+                                            api.sendTitle(p,api.getString("color_Title_Congratulation") + api.getString("congratulation") + " " + api.getString("color_Title_Primary") + api.getString("win") + api.getString("color_green") + api.getString("green_team") + api.getString("color_blue") + " +" + 14*coins_bet, api.getString("color_Title_Primary") + api.getString("balance")+ api.getString("color_Title_Congratulation") + api.getPlayerCoins(p), 40, 20, 20);
                                             api.playEffect(p, Color.GREEN);
                                             return true;
                                         } else {
@@ -60,9 +57,9 @@ public class Bet implements CommandExecutor {
                                             return true;
                                         }
                                     } else if (game < 1000) {
-                                        if(args[1].equals("czarne")) {
+                                        if(args[1].equals(api.getString("black_team"))) {
                                             api.addPlayerCoins(p,2 * coins_bet);
-                                            api.sendTitle(p,"§eGratulacje!" + color_Title_Green + " Wygralo §8czarne §9+" + 2*coins_bet, color_Title_Green + "Twoje saldo to §e" + api.getPlayerCoins(p), 40, 20, 20);
+                                            api.sendTitle(p,api.getString("color_Title_Congratulation") + api.getString("congratulation") +  " " + api.getString("color_Title_Primary") + api.getString("win") + api.getString("color_black") + api.getString("black_team") + api.getString("color_blue") + " +" + 2*coins_bet, api.getString("color_Title_Primary") + api.getString("balance")+ api.getString("color_Title_Congratulation") + api.getPlayerCoins(p), 40, 20, 20);
                                             api.playEffect(p, Color.BLACK);
                                             return true;
                                         } else {
@@ -72,31 +69,32 @@ public class Bet implements CommandExecutor {
                                     }
                                     return true;
                                 } else {
-                                    p.sendMessage(ChatColor.RED + "Nie masz wystarczającej ilości coinsów!");
+                                    p.sendMessage(ChatColor.RED + api.getString("dont_have_money"));
                                     return true;
                                 }
 
                             } else {
-                                p.sendMessage(ChatColor.RED + "Musisz podać drużyne! Dostępne drużyny: " + ChatColor.DARK_RED + "czerwone " + ChatColor.GREEN + "zielone" + ChatColor.DARK_GRAY + "czarne" + ChatColor.RED + ".");
+                                p.sendMessage(ChatColor.RED + api.getString("enter_team") + ChatColor.DARK_RED + api.getString("red_team") +" "+ ChatColor.GREEN + api.getString("green_team") + ChatColor.DARK_GRAY + " " + api.getString("black_team") + ChatColor.RED + ".");
                                 return true;
                             }
 
                         } else {
-                            p.sendMessage(ChatColor.RED + "Kwota musi być dodatnia!");
+                            p.sendMessage(ChatColor.RED + api.getString("more_than_0"));
                             return true;
                         }
 
                     } else {
-                        p.sendMessage(ChatColor.RED + "Kwota musi być podana za pomocą liczby i musi być równa lub mniejsza niż 1mln!");
+                        p.sendMessage(ChatColor.RED + api.getString("less_than_ 1mln"));
                         return true;
                     }
                 } else {
-                    p.sendMessage(ChatColor.RED + "Błędna ilość argumentów!");
+                    p.sendMessage(ChatColor.RED + api.getString("error_args"));
+                    p.sendMessage(ChatColor.RED + api.getString("usage_bet"));
                     return true;
                 }
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "Tylko gracze mogą uzyc tej komendy!");
+            sender.sendMessage(ChatColor.RED + api.getString("only_player"));
             return true;
         }
 
@@ -109,15 +107,15 @@ public class Bet implements CommandExecutor {
         String win_team = "";
 
         if(game < 525) {
-            win_team =  color_Title_Gold + "Wygrało §cczerwone";
+            win_team =  api.getString("color_Title_Secondary") + api.getString("win") + api.getString("color_red") + api.getString("red_team");
         } else if(game <575) {
-            win_team =  color_Title_Gold + "Wygrało §azielone";
+            win_team =  api.getString("color_Title_Secondary") + api.getString("win") + api.getString("color_green") + api.getString("green_team");
         } else if(game < 1000) {
-            win_team =  color_Title_Gold + "Wygrało §8czarne";
+            win_team =  api.getString("color_Title_Secondary") + api.getString("win") + api.getString("color_black") + api.getString("black_team");
         }
 
         api.refreshConfig();
-        api.sendTitle(p,color_Title_Green + "Niestety przegrałeś, " + win_team,color_Title_Green + "Twoje saldo to §e" + api.getPlayerCoins(p) , 40, 20, 20);
+        api.sendTitle(p,api.getString("color_Title_Primary") + api.getString("lose") + ", " + win_team,api.getString("color_Title_Primary") + api.getString("balance") + api.getString("color_Title_Congratulation") + api.getPlayerCoins(p) , 40, 20, 20);
     }
 
 }

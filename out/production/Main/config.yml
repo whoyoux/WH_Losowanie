@@ -1,0 +1,106 @@
+
+## !!!
+## YOU CAN ONLY EDIT COLOR WHERE IT IS SOMETHING LIKE: §e
+## !!!
+
+
+
+## GLOBAL
+
+only_players: "Tylko gracze mogą uzyc tej komendy"
+error_args: "Błędna ilość argumentów!"
+dont_have_money: "Nie masz wystarczającej ilości coinsów!"
+balance: "Twoje saldo to: "
+permission: "Nie masz dostepu do tej komendy!"
+not_found_player: "Nie znaleziono takiego gracza online!"
+error: "Wystąpił błąd! Przepraszamy za utrudnienia!"
+
+color_Title_Primary: "§f"
+color_Title_Secondary: "§6"
+color_Title_Congratulation: "§e"
+
+##
+
+## BET
+
+color_red: "§c"
+color_green: "§a"
+color_black: "§8"
+color_blue: "§9"
+
+congratulation: "Gratulacje!"
+win: "Wygrało "
+lose: "Niestety przegrałeś"
+
+red_team: "czerwone"
+green_team: "zielone"
+black_team: "czarne"
+
+less_than_1mln: "Kwota musi być podana za pomocą liczby i musi być równa lub mniejsza niż 1mln!"
+more_than_0: "Kwota musi być dodatnia!"
+enter_team: "Musisz podać drużyne! Dostępne drużyny: "
+##
+
+## BALANCE
+
+balance_player: "Saldo "
+
+##
+
+## TO SELL
+
+items_to_sell: "Itemy, które można sprzedać"
+diamond: "diament"
+dirt: "dirt"
+cobblestone: "cobblestone"
+redstone: "redstone"
+emerald: "emerald"
+
+## Like diamonds so 's' is this
+more_1: "y"
+
+##
+
+## SELL
+
+item_hand: "Nie masz itemu w ręce!"
+cant_sell: "Tego nie da się sprzedać!"
+sell: "Sprzedano"
+
+##
+
+## SET COINS
+
+amout_more_1mln: "Kwota do ustawienia musi być liczbą i być miejsza niż 1mln!"
+amout: "Kwota"
+set: "została ustawiona graczu"
+
+##
+
+## BUY
+
+elytra: "ELYTRA"
+diamond_sword: "Turbo kozacki miecz"
+diamond_axe: "Turbo kozacka siekiera"
+diamond_pickaxe: "Turbo kozacki kilof"
+golden_apples: "Kozak jabłko"
+iron_sword: "Turbo kozacki żelazny miecz"
+iron_axe: "Turbo kozacka żelazna siekiera"
+iron_pickaxe: "Turbo kozacki żelazny kilof"
+porks: "Wieprzowina"
+price: "Koszt"
+just_buy: "Właśnie kupiłeś"
+for: "za"
+coins: "coinsów"
+
+##
+
+## USAGE
+
+usage_bet: "Użycie: /bet [ilosc_coinsow] [czerwone|zielone|czarne]"
+usage_setcoins: "Użycie: /setcoins [ilosc_coinsow] [nick_gracza]"
+usage_dosprzedania: "Użycie: /dosprzedania"
+usage_sprzedaj: "Użycie: /sprzedaj"
+usage_kup: "Użycie: /kup"
+
+##

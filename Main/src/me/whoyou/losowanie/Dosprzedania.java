@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 
 public class Dosprzedania implements CommandExecutor {
 
+    public static Api api;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
@@ -16,22 +18,23 @@ public class Dosprzedania implements CommandExecutor {
 
                 if(args.length == 0) {
 
-                    p.sendMessage(ChatColor.GRAY + "Itemy, które można sprzedać:");
-                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.BLUE + "diamenty");
-                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.GREEN + "dirt");
-                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.DARK_GRAY + "cobblestone");
-                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.RED + "redstone");
-                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.GREEN + "emeraldy");
+                    p.sendMessage(ChatColor.GRAY + api.getString("items_to_sell"));
+                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.BLUE + api.getString("diamond"));
+                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.GREEN + api.getString("dirt"));
+                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.DARK_GRAY + api.getString("cobblestone"));
+                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.RED + api.getString("redstone"));
+                    p.sendMessage(ChatColor.GRAY + " - " + ChatColor.GREEN + api.getString("emerald"));
                     return true;
 
                 } else {
-                    p.sendMessage(ChatColor.RED + "Błędna ilość argumentów!");
+                    p.sendMessage(ChatColor.RED + api.getString("error_args"));
+                    p.sendMessage(ChatColor.RED + api.getString("usage_dosprzedania"));
                     return true;
                 }
 
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "Tylko gracze mogą uzyc tej komendy!");
+            sender.sendMessage(ChatColor.RED + api.getString("only_players"));
             return true;
         }
 

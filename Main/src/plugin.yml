@@ -13,7 +13,7 @@ commands:
     description: Zobacz swoje saldo
     usage: /<command>
     permission-message: Nie masz permisji!
-  setcoins:
+  ustawsaldo:
     description: Ustaw saldo graczu
     usage: /<command> [ilosc_coinsow] [nick_gracza]
     permission-message: Nie masz permisji!
